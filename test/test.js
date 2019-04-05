@@ -1,4 +1,4 @@
-var assert = require("assert"); //nodejs에서 제공하는 aseert 모듈
+var assert = require("assert"); //nodejs에서 제공하는 assert 모듈
 
 describe('Array 테스트', function() {
 	describe('indexOf() 메서드', function () {
