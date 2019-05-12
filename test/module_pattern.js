@@ -4,9 +4,10 @@ var assert = require('assert');
 // 객체지향언어의 class 처럼 캡슐화로 정보은닉을 하며 
 // return값으로 외부에 공개할 인터페이스를 노출한다.
 var hello = function(name){
+    // 멤버변수라고 볼 수 있다.
     var name = name;
 
-    // 일종의 private 메소드라고 볼수 있다. 
+    // 일종의 private 메소드라고 볼 수 있다. 
     function print(text){
         console.log(text);
     }
