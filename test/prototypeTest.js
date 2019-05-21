@@ -7,14 +7,21 @@ describe('프로토타입', function(){
             this.age = age;
         }
         Person.prototype.job = "none";
+        Person.prototype.getName = function(){
+            return this.name;
+        }
             
         assert.equal(true, Person.hasOwnProperty('prototype'));
         assert.equal("none", Person.prototype.job);
+        assert.equal(undefined, Person.prototype.getName());
 
         // 생성자함수로 생성된 객체의 부모는 생성자함수의 prototype속성으로 결정된다.
         var person1 = new Person('ariana', 26);
         assert.equal("none", person1.job);
         assert.equal("none", person1.__proto__.job);
+
+        assert.equal("ariana", person1.getName());
+        assert.equal(undefined, person1.__proto__.getName()); // TODO this 에 바인딩 되는 값이 내 예상과 다르다.
  
         // 프로토타입 링크관계를 보여준다.
         assert.equal(true, person1.__proto__ === Person.prototype);
@@ -37,20 +44,20 @@ describe('프로토타입', function(){
         }
         Person.prototype.job = 'singer';
 
-        var person1 = new Person('ariana', 26);
-        var person2 = new Person('gaga', 34);
+        var ariana = new Person('ariana', 26);
+        var gaga = new Person('gaga', 34);
 
-        assert.equal('singer', person1.job);
-        assert.equal('singer', person2.job);
+        assert.equal('singer', ariana.job);
+        assert.equal('singer', gaga.job);
 
         // 프로토타입의 값에 접근이 아닌, job이라는 프로퍼티를 동적으로 생성한것이다.
-        person1.job = 'dancer';
+        ariana.job = 'dancer';
 
         // 프로토타입보다 자신의 속성을 우선하여 접근한다.
-        assert.equal('dancer', person1.job);
+        assert.equal('dancer', ariana.job);
 
         // 자신의 속성에 접근하려는 프로퍼티가 없을때 프로토타입 체이닝이 일어난다.
-        assert.equal('singer', person2.job);
+        assert.equal('singer', gaga.job);
     });
 
     it('객체의 생성자함수 링크', function(){
