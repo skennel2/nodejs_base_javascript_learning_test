@@ -90,14 +90,14 @@ describe('Object 테스트', function(){
             value2 : 'Test2',
         };
 
-        // ... 키워드로 obj의 내용을 새로운 객체에 복사한다.
+        // '...' 키워드로 obj의 내용을 새로운 객체에 복사한다.
         obj2 = {
             ...obj,
             value2 : 'Test22',
             value3 : 'Test3'
         };
 
-        // 기존의 객체에는 영향이 없다는것을 알수있다.
+        // 복사의 대상이 되는 기존의 객체에는 영향이 없다는것을 알수있다.
         assert.equal(false, obj.hasOwnProperty('value3'));
         assert.equal('Test2', obj.value2);
 
