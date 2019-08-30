@@ -84,7 +84,7 @@ describe('Object 테스트', function(){
         assert.equal('Test3', target.value3);
     })
 
-    it('Object assign', function(){
+    it('...키워드로 객체복사하기', function(){
         let obj = {
             value1 : 'Test',
             value2 : 'Test2',
