@@ -83,4 +83,27 @@ describe('Object 테스트', function(){
         assert.equal('Test2', target.value2);
         assert.equal('Test3', target.value3);
     })
+
+    it('Object assign', function(){
+        let obj = {
+            value1 : 'Test',
+            value2 : 'Test2',
+        };
+
+        // ... 키워드로 obj의 내용을 새로운 객체에 복사한다.
+        obj2 = {
+            ...obj,
+            value2 : 'Test22',
+            value3 : 'Test3'
+        };
+
+        // 기존의 객체에는 영향이 없다는것을 알수있다.
+        assert.equal(false, obj.hasOwnProperty('value3'));
+        assert.equal('Test2', obj.value2);
+
+        // 'Test'의 값이 정상적으로 잘 복사되었다.
+        assert.equal('Test', obj2.value1);
+        assert.equal('Test22', obj2.value2);
+        assert.equal('Test3', obj2.value3);
+    })
 });
