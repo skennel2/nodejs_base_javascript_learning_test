@@ -172,15 +172,6 @@ describe('Function 테스트', function(){
         };
     })
 
-    it('', function(){
-        function add(a, b){
-            return a + b;
-        }
-
-        // 이 함수를 호출할떄 2, 8 외에 arguments객체(유사배열)및 this가 전달된다.
-        add(2, 8);
-    })
-
     it('함수 호출시 암묵적으로 전달되는 인자', function(){
         function add(a, b){
             return a + b;
