@@ -1,3 +1,5 @@
+let value = 10;
+
 exports.someModule = {
-    someValue : 10
+    someValue : value
 }

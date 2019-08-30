@@ -66,4 +66,21 @@ describe('Object 테스트', function(){
         assert.equal(25, people2.age);
         assert.equal(25, people.age);
     })
+
+    it('Object assign', function(){
+        let source = {
+            value1: 'Test',
+            value2: 'Test2'
+        };
+
+        let target = { value3: 'Test3' };
+
+        // source 객체의 내용을 target에 복사한다.
+        // 복사된 target 객체를 리턴한다.
+        Object.assign(target, source);
+
+        assert.equal('Test', target.value1);
+        assert.equal('Test2', target.value2);
+        assert.equal('Test3', target.value3);
+    })
 });

@@ -21,20 +21,22 @@ describe('프로토타입', function(){
         assert.equal("none", person1.__proto__.job);
 
         assert.equal("ariana", person1.getName());
-        assert.equal(undefined, person1.__proto__.getName()); // TODO this 에 바인딩 되는 값이 내 예상과 다르다.
+        assert.equal(undefined, person1.__proto__.getName()); // TODO: this 에 바인딩 되는 값이 내 예상과 다르다.
  
         // 프로토타입 링크관계를 보여준다.
         assert.equal(true, person1.__proto__ === Person.prototype);
     });
 
     it('프로토 타입으로 기본타입에 기능 추가하기', function(){
+        // String의 프로토타입에 test라는 메소드를 추가했다.
         String.prototype.test = function(){
           return 'test';  
         };
 
         var value = "hi";
-        
-        assert.equal("test", value.test());
+        var calltest = value.test();
+
+        assert.equal("test", calltest);
     });
 
     it('프로토타입 체이닝', function () {
