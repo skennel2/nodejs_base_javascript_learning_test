@@ -27,10 +27,13 @@ describe('this 테스트', function(){
         assert.equal('kevin', name);
     });
 
+    /**
+     * TODO: 
+     */
     it('this2', function(){
         function someFunction(){
             this.age = 10;
-            assert.equal(10, this.age);
+            assert.equal(10, this.age, 'function내 에서의 this의 의미');
         }
     
         someFunction();
