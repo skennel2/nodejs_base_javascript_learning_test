@@ -3,6 +3,9 @@ var url = require('url');
 var util = require('util');
 var assert = require('assert');
 
+/**
+ * https://nodejs.org/dist/latest-v12.x/docs/api/
+ */
 describe('nodejs 전역모듈', function () {
     /**
      * @see https://nodejs.org/dist/latest-v12.x/docs/api/os.html

@@ -16,7 +16,6 @@ describe('nodejs 전역 요소', function(){
         console.log(console.timeEnd());
     });
 
-
     /**
      * process 객체는 프로그램과 관련된 정보를 나타내는 객체
      * nodejs에만 존재한다.
