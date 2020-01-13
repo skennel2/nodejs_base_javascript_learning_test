@@ -165,8 +165,12 @@ describe('Function 테스트', function(){
             return a + b;
         }
         
-        // 함수표현식일 호이스팅이 발생하지 않는다. 에러발생
-        result = subtract(11, 3); // uncaught type error : subtract is not a function
+        // 함수표현식일때 호이스팅이 발생하지 않는다. 에러발생
+        // uncaught type error : subtract is not a function
+        assert.throws(()=> {
+            subtract(11, 3) 
+        }, TypeError);
+
         var subtract = function(a, b){
             return a - b;
         };
