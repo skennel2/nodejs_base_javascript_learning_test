@@ -23,7 +23,7 @@ describe('this 테스트', () => {
             }
         };
 
-        // 화살표 함수와 일반 
+        // 화살표 함수와 일반 함수의 동작차이를 주의깊게 볼것
         jane.setName('Joe');
         assert.equal('Joe', jane.getName());
         assert.equal('Joe', jane.name);
