@@ -11,5 +11,8 @@
   "devDependencies": {
     "axios": "^0.18.1",
     "mocha": "^6.2.0"
+  },
+  "dependencies": {
+    "socket.io": "^2.3.0"
   }
 }
