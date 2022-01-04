@@ -36,4 +36,9 @@ describe('nodejs 전역 요소 path', function () {
 
         console.log(formatted)
     });
+
+    it('join', function () {
+        const join = path.join('/foo', 'bar/', '/baz/asdf', 'quux', '..');
+        assert.equal(join, '/foo/bar/baz/asdf')
+    });
 });
