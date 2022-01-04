@@ -1,16 +1,16 @@
 var assert = require("assert");
 
-describe('프로토타입', function(){
-    it('생성자함수는 prototype프로퍼티를 가지며, 생성된 객체에 링크된다.', function(){
-        function Person(name, age){
+describe('프로토타입', function () {
+    it('생성자함수는 prototype프로퍼티를 가지며, 생성된 객체에 링크된다.', function () {
+        function Person(name, age) {
             this.name = name;
             this.age = age;
         }
         Person.prototype.job = "none";
-        Person.prototype.getName = function(){
+        Person.prototype.getName = function () {
             return this.name;
         }
-            
+
         assert.equal(true, Person.hasOwnProperty('prototype'));
         assert.equal("none", Person.prototype.job);
         assert.equal(undefined, Person.prototype.getName());
@@ -22,15 +22,15 @@ describe('프로토타입', function(){
 
         assert.equal("ariana", person1.getName());
         assert.equal(undefined, person1.__proto__.getName()); // TODO: this 에 바인딩 되는 값이 내 예상과 다르다.
- 
+
         // 프로토타입 링크관계를 보여준다.
         assert.equal(true, person1.__proto__ === Person.prototype);
     });
 
-    it('프로토 타입으로 기본타입에 기능 추가하기', function(){
+    it('프로토 타입으로 기본타입에 기능 추가하기', function () {
         // String의 프로토타입에 test라는 메소드를 추가했다.
-        String.prototype.test = function(){
-          return 'test';  
+        String.prototype.test = function () {
+            return 'test';
         };
 
         var value = "hi";
@@ -40,7 +40,7 @@ describe('프로토타입', function(){
     });
 
     it('프로토타입 체이닝', function () {
-        function Person(name, age){
+        function Person(name, age) {
             this.name = name;
             this.age = age;
         }
@@ -62,12 +62,12 @@ describe('프로토타입', function(){
         assert.equal('singer', gaga.job);
     });
 
-    it('객체의 생성자함수 링크', function(){
-        function Person(name, age){
+    it('객체의 생성자함수 링크', function () {
+        function Person(name, age) {
             this.name = name;
             this.age = age;
         }
-        
+
         var person1 = new Person('Cha', 45);
         var person2 = new person1.__proto__.constructor('Kim', 32);
         var person3 = new Person.prototype.constructor('Jung', 42);
@@ -76,18 +76,18 @@ describe('프로토타입', function(){
         assert.equal('Jung', person3.name);
     });
 
-    it('객체의 프로토타입 변경하기', function(){
-        function Person(name, age){
+    it('객체의 프로토타입 변경하기', function () {
+        function Person(name, age) {
             this.name = name;
             this.age = age;
         }
 
         var person1 = new Person('Cha', 45);
         person1.__proto__ = {
-          country : "USA"  ,
-          getName : function(){
-              return this.name;
-          }
+            country: "USA",
+            getName: function () {
+                return this.name;
+            }
         };
 
         assert.equal('USA', person1.country);
