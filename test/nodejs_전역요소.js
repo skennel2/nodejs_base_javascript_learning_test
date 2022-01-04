@@ -27,7 +27,6 @@ describe('nodejs 전역 요소', function () {
         console.log(JSON.stringify(process.env));
         // 메모리 사용 정보
         console.log(process.memoryUsage());
-
         // 현재 경로
         console.log(process.cwd())
     });
