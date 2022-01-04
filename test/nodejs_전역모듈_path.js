@@ -1,6 +1,6 @@
 var assert = require('assert');
 var path = require('path');
-const { win32 } = require('path');
+
 describe('nodejs 전역 요소 path', function () {
     it('window vs posix', function () {
         // 아래 결과는 실행하는 운영체제에 따라 다르게 해석된다.
@@ -23,6 +23,13 @@ describe('nodejs 전역 요소 path', function () {
         const splitedWithDelimeters = win32BaseTestPath.split(path.delimiter);
 
         assert.equal(splitedWithWinDelimeters.length, 3);
+    });
+
+    it('sep', function () {
+        // path segment separator 리턴 \ on Windows, / on POSIX
+        const splitOnPosix = 'foo/bar/baz'.split(path.sep);
+        
+        //Returns: ['foo', 'bar', 'baz']
     });
 
     it('format', function () {
