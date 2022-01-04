@@ -22,7 +22,6 @@ describe('nodejs 전역 요소 path', function () {
         const splitedWithWinDelimeters = win32BaseTestPath.split(path.win32.delimiter);
         const splitedWithDelimeters = win32BaseTestPath.split(path.delimiter);
 
-        console.log(splitedWithDelimeters, path.delimiter)
         assert.equal(splitedWithWinDelimeters.length, 3);
     });
 
@@ -40,5 +39,18 @@ describe('nodejs 전역 요소 path', function () {
     it('join', function () {
         const join = path.join('/foo', 'bar/', '/baz/asdf', 'quux', '..');
         assert.equal(join, '/foo/bar/baz/asdf')
+    });
+
+    it('parse', function () {
+        const parsed = path.parse('C:\\path\\dir\\file.txt');
+
+        console.log(parsed)
+
+        // Returns:
+        // { root: 'C:\\',
+        //   dir: 'C:\\path\\dir',
+        //   base: 'file.txt',
+        //   ext: '.txt',
+        //   name: 'file' }
     });
 });
