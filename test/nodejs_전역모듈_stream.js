@@ -2,7 +2,7 @@ var fs = require('fs');
 var assert = require('assert');
 
 /**
- * https://velog.io/@moongq/Stream-Nodejs
+ * @link https://velog.io/@moongq/Stream-Nodejs
  * 
  * @link https://seungtaek-overflow.tistory.com/7
  */
@@ -13,6 +13,7 @@ describe('nodejs 전역모듈 fs stream', () => {
      * paused에서는 stream.read() 메소드 호출을 통해 데이터 청크를 읽게 만들어야한다.
      */
     it('make readable stream', async () => {
+
         // 파일로 부터 readable 스트림생성
         const fileStream = fs.createReadStream('./test/test.txt', 'utf-8');
 
@@ -27,8 +28,8 @@ describe('nodejs 전역모듈 fs stream', () => {
         })
 
         // 위에서 data 이벤트 핸들러를 추가했기에 readableFlowing === true가 되었다.
+        // 자동으로 데이터를 계속 읽으며 이벤트 헨들러가 호출될것이다.
         assert.equal(fileStream.readableFlowing, true)
-        console.log('ttt', fileStream.read())
         fileStream.pause();
 
         // pause 메소드를 호출해 readableFlowing === false 가 되었다.
@@ -68,10 +69,21 @@ describe('nodejs 전역모듈 fs stream', () => {
 
         fileStream.write('Hello World');
         // write 외에 append 같은 api는 존재하지 않는다.
-        
+
         // write stream 은 반드시 end를 호출한다.
         fileStream.end();
 
         assert.ok(fileStream)
+    })
+
+    it('stream pipe', () => {
+        const writeStream = fs.createWriteStream('./test/test_copy.txt');
+        const readStream = fs.createReadStream('./test/test.txt');
+
+        // pipe로 다른스트림과 연결되면 자동으로 readStream은 flowing 모드가 된다.
+        const pipe = readStream.pipe(writeStream);
+        
+        // test_copy파일에 내용이 그대로 복사되었다.
+        assert.ok(pipe)
     })
 })
