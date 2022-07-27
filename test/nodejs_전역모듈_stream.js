@@ -82,7 +82,16 @@ describe('nodejs 전역모듈 fs stream', () => {
 
         // pipe로 다른스트림과 연결되면 자동으로 readStream은 flowing 모드가 된다.
         const pipe = readStream.pipe(writeStream);
-        
+
+        // 시작점이 되는 stream이 데이터를 모두 불러와서 종료되면, 목적지 stream의 end메소드를 호출하면서 종료시켜준다
+        writeStream.on('close', () => {
+            console.log('writeStream closed!');
+        });
+
+        readStream.on('close', () => {
+            console.log('readStream closed!');
+        });
+
         // test_copy파일에 내용이 그대로 복사되었다.
         assert.ok(pipe)
     })
