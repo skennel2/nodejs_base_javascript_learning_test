@@ -25,7 +25,7 @@ describe('nodejs 전역 요소 Buffer', () => {
 
         const writeStream = fs.createWriteStream('./test/test_image_copy.png');
 
-        const writeResult = writeStream.write(imageFileBuffer);
+        writeStream.write(imageFileBuffer);
         
         writeStream.end();
     })
