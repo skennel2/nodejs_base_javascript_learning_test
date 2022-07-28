@@ -1,4 +1,4 @@
-const { Worker } = require('worker_threads')
+const { Worker, isMainThread } = require('worker_threads')
 
 function runService(parameter) {
     return new Promise((resolve, reject) => {
@@ -33,6 +33,8 @@ function run() {
     //     console.log(data);
     // })
     
+    console.log(isMainThread);
+
     new Promise(resolve => {
         console.log('app run')
         resolve();
