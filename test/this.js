@@ -84,3 +84,47 @@ describe('this 테스트', () => {
         assert.equal(undefined, independent())
     })
 });
+
+class ValueWrapper {
+    value;
+    constructor(value) {
+        this.value = value;
+    }
+
+    getValue() {
+        return this.value;
+    }
+
+    getValueFunction = function () {
+        return this.value;
+    }
+
+    getValueArrow = () => {
+        return this.value;
+    }
+
+    getFunction(type) {
+        if (type === 'method') {
+            return this.getValue.bind(this);
+        } else if (type === 'function') {
+            return this.getValueFunction.bind(this);
+        } else if (type === 'arrow') {
+            return this.getValueArrow;
+        }
+    }
+}
+
+describe('class의 this', () => {
+    it('test', () => {
+        const value = new ValueWrapper('test');
+
+        // 모두 ValueWrapper 객체의 value를 가르킨다.
+        assert.equal('test', value.getValue());
+        assert.equal('test', value.getValueFunction());
+        assert.equal('test', value.getValueArrow());
+
+        assert.equal('test', value.getFunction('method')());
+        assert.equal('test', value.getFunction('function')());
+        assert.equal('test', value.getFunction('arrow')());
+    })
+})
