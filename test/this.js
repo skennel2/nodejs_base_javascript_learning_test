@@ -23,13 +23,19 @@ describe('this 테스트', () => {
             }
         };
 
+
+
         // 화살표 함수와 일반 함수의 동작차이를 주의깊게 볼것
         jane.setName('Joe');
         assert.equal('Joe', jane.getName());
         assert.equal('Joe', jane.name);
+        assert.equal('kevin', jane.getNameArrow());
 
+        // 객체 리터널의 화살표 함수내 this는 global을 바라보는듯하다.
         jane.setNameArrow('Marry');
         assert.equal('Joe', jane.getName());
+        assert.equal('Joe', jane.name);
+        assert.equal('Marry', jane.getNameArrow());
         assert.equal('Marry', this.name);
     });
 
