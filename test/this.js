@@ -59,4 +59,22 @@ describe('this 테스트', () => {
         assert.equal(10, this.age);
 
     });
+
+    /**
+     * @link https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this
+     */
+    it('화살표 함수의 this', () => {
+        var o = { prop: 37 };
+
+        function independent() {
+            return this.prop;
+        }
+
+        o.f = independent;
+
+        // 함수가 객체 o의 멤버 f로부터 호출되었다는 사살이 중요하다.
+        assert.equal(37, o.f());
+
+        assert.equal(undefined, independent())
+    })
 });
